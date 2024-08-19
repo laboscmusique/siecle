@@ -24,6 +24,12 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
+        .timeline-container {
+            position: relative;
+            width: calc(100% + 30px);
+            margin-left: -15px;
+            margin-right: -15px;
+        }
         .timeline {
             width: 100%;
             height: 4px;
@@ -49,52 +55,51 @@
         #pointer {
             width: 0;
             height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid orange;
             position: absolute;
-            bottom: -30px;
+            bottom: 4px;
             left: 0;
             transform: translateX(-50%);
         }
         #slider {
-            width: 100%;
+            width: calc(100% + 30px);
             margin-top: 20px;
             -webkit-appearance: none;
             background: transparent;
+            margin-left: -15px;
+            margin-right: -15px;
         }
         #slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            width: 30px;
+            height: 30px;
+            background: transparent;
             cursor: pointer;
-            margin-top: -10px; /* ajustez cette valeur pour aligner la flèche correctement */
+            border: none;
         }
         #slider::-moz-range-thumb {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            width: 30px;
+            height: 30px;
+            background: transparent;
             cursor: pointer;
+            border: none;
         }
         #slider::-webkit-slider-runnable-track {
             width: 100%;
-            height: 4px;
+            height: 10px;
             cursor: pointer;
             background: #ddd;
-            border-radius: 2px;
+            border-radius: 5px;
         }
         #slider::-moz-range-track {
             width: 100%;
-            height: 4px;
+            height: 10px;
             cursor: pointer;
             background: #ddd;
-            border-radius: 2px;
+            border-radius: 5px;
         }
         sup {
             font-size: 0.6em;
@@ -105,9 +110,11 @@
 <body>
     <div class="container">
         <div id="yearDisplay"></div>
-        <div class="timeline" id="timeline"></div>
-        <div id="pointer"></div>
-        <input type="range" id="slider" min="1" max="2100" value="2000">
+        <div class="timeline-container">
+            <div class="timeline" id="timeline"></div>
+            <div id="pointer"></div>
+            <input type="range" id="slider" min="1" max="2100" value="1">
+        </div>
     </div>
 
     <script>
@@ -129,7 +136,7 @@
             const century = Math.ceil(year / 100);
             const romanCentury = romanize(century);
             const centurySuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
-            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
+            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>e</sup>";
             yearDisplay.innerHTML = `L'année ${year} est au ${romanCentury}${romanSuffix} siècle (${century}${centurySuffix})`;
             
             // Update timeline color
@@ -144,7 +151,7 @@
                 black 100%)`;
 
             // Update pointer position
-            pointer.style.left = `${(year - 1) / 21}%`;
+            pointer.style.left = `calc(${(year - 1) / 21}% + 15px)`;
         }
 
         function romanize(num) {
@@ -179,7 +186,7 @@
         });
 
         // Initial update
-        updateDisplay(2000);
+        updateDisplay(1);
     </script>
 </body>
 </html>
