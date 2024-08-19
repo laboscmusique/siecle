@@ -54,33 +54,24 @@
             border-bottom: 20px solid orange;
             position: absolute;
             bottom: -30px;
-            left: 0;
+            left: 50%; /* Centré par rapport à la timeline */
             transform: translateX(-50%);
         }
         #slider {
-            width: calc(100% - 20px); /* Ajusté pour compenser la largeur du curseur */
+            width: 100%; /* Ajustement pour la largeur complète */
             margin-top: 20px;
             -webkit-appearance: none;
             background: transparent;
-            position: relative; /* Ajouté pour positionner le slider par rapport au parent */
+            position: relative;
         }
         #slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            width: 20px; /* Largeur du curseur */
+            height: 20px;
+            background: transparent;
             cursor: pointer;
-        }
-        #slider::-moz-range-thumb {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
-            cursor: pointer;
+            margin-top: -8px; /* Ajustement pour l'alignement vertical */
         }
         #slider::-webkit-slider-runnable-track {
             width: 100%;
@@ -88,6 +79,12 @@
             cursor: pointer;
             background: #ddd;
             border-radius: 2px;
+        }
+        #slider::-moz-range-thumb {
+            width: 20px; /* Largeur du curseur */
+            height: 20px;
+            background: transparent;
+            cursor: pointer;
         }
         #slider::-moz-range-track {
             width: 100%;
