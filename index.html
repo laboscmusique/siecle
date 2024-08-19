@@ -129,7 +129,7 @@
             const century = Math.ceil(year / 100);
             const romanCentury = romanize(century);
             const centurySuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
-            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
+            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>e</sup>";
             yearDisplay.innerHTML = `L'année ${year} est au ${romanCentury}${romanSuffix} siècle (${century}${centurySuffix})`;
             
             // Update timeline color
