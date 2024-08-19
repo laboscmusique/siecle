@@ -13,6 +13,7 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
+            background-color: white; /* Ajout du fond blanc */
         }
         .container {
             text-align: center;
@@ -52,9 +53,9 @@
             border-right: 10px solid transparent;
             border-bottom: 20px solid orange;
             position: absolute;
-            bottom: -30px;
+            bottom: 4px; /* Ajusté pour aligner le sommet avec la timeline */
             left: 0;
-            transform: translateX(-50%);
+            transform: translateX(-10px); /* Ajusté pour centrer le sommet */
         }
         #slider {
             width: 100%;
@@ -65,21 +66,18 @@
         #slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            width: 20px;
+            height: 20px;
+            background: orange;
             cursor: pointer;
-            margin-top: -10px; /* ajustez cette valeur pour aligner la flèche correctement */
+            border-radius: 50%;
         }
         #slider::-moz-range-thumb {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
+            width: 20px;
+            height: 20px;
+            background: orange;
             cursor: pointer;
+            border-radius: 50%;
         }
         #slider::-webkit-slider-runnable-track {
             width: 100%;
@@ -143,7 +141,7 @@
                 black 100%)`;
 
             // Update pointer position
-            pointer.style.left = `${(year - 1) / 21}%`;
+            pointer.style.left = `calc(${(year - 1) / 21}% + 10px)`; // Ajusté pour aligner correctement
         }
 
         function romanize(num) {
