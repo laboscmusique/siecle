@@ -62,15 +62,15 @@
             margin-top: 20px;
             -webkit-appearance: none;
             background: transparent;
-            position: relative;
         }
         #slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
             width: 20px; /* Largeur du curseur */
             height: 20px;
-            background: transparent;
+            background-color: orange; /* Rendre le curseur visible */
             cursor: pointer;
+            border-radius: 50%;
             margin-top: -8px; /* Ajustement pour l'alignement vertical */
         }
         #slider::-webkit-slider-runnable-track {
@@ -83,8 +83,9 @@
         #slider::-moz-range-thumb {
             width: 20px; /* Largeur du curseur */
             height: 20px;
-            background: transparent;
+            background-color: orange; /* Rendre le curseur visible */
             cursor: pointer;
+            border-radius: 50%;
         }
         #slider::-moz-range-track {
             width: 100%;
