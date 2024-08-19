@@ -24,12 +24,6 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
-        .timeline-container {
-            position: relative;
-            width: calc(100% + 30px);
-            margin-left: -15px;
-            margin-right: -15px;
-        }
         .timeline {
             width: 100%;
             height: 4px;
@@ -55,51 +49,52 @@
         #pointer {
             width: 0;
             height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 30px solid orange;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid orange;
             position: absolute;
-            bottom: 4px;
+            bottom: -30px;
             left: 0;
             transform: translateX(-50%);
         }
         #slider {
-            width: calc(100% + 30px);
+            width: 100%;
             margin-top: 20px;
             -webkit-appearance: none;
             background: transparent;
-            margin-left: -15px;
-            margin-right: -15px;
         }
         #slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 30px;
-            height: 30px;
-            background: transparent;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid orange;
             cursor: pointer;
-            border: none;
+            margin-top: -10px; /* ajustez cette valeur pour aligner la flèche correctement */
         }
         #slider::-moz-range-thumb {
-            width: 30px;
-            height: 30px;
-            background: transparent;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 20px solid orange;
             cursor: pointer;
-            border: none;
         }
         #slider::-webkit-slider-runnable-track {
             width: 100%;
-            height: 10px;
+            height: 4px;
             cursor: pointer;
             background: #ddd;
-            border-radius: 5px;
+            border-radius: 2px;
         }
         #slider::-moz-range-track {
             width: 100%;
-            height: 10px;
+            height: 4px;
             cursor: pointer;
             background: #ddd;
-            border-radius: 5px;
+            border-radius: 2px;
         }
         sup {
             font-size: 0.6em;
@@ -110,11 +105,9 @@
 <body>
     <div class="container">
         <div id="yearDisplay"></div>
-        <div class="timeline-container">
-            <div class="timeline" id="timeline"></div>
-            <div id="pointer"></div>
-            <input type="range" id="slider" min="1" max="2100" value="1">
-        </div>
+        <div class="timeline" id="timeline"></div>
+        <div id="pointer"></div>
+        <input type="range" id="slider" min="1" max="2100" value="1">
     </div>
 
     <script>
@@ -136,7 +129,7 @@
             const century = Math.ceil(year / 100);
             const romanCentury = romanize(century);
             const centurySuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
-            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>e</sup>";
+            const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>ème</sup>";
             yearDisplay.innerHTML = `L'année ${year} est au ${romanCentury}${romanSuffix} siècle (${century}${centurySuffix})`;
             
             // Update timeline color
@@ -151,7 +144,7 @@
                 black 100%)`;
 
             // Update pointer position
-            pointer.style.left = `calc(${(year - 1) / 21}% + 15px)`;
+            pointer.style.left = `${(year - 1) / 21}%`;
         }
 
         function romanize(num) {
