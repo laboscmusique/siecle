@@ -127,7 +127,7 @@
         for (let i = 100; i <= 2099; i += 100) {
     const marker = document.createElement('div');
     marker.className = 'marker';
-    marker.style.left = i === 2100 ? '100%' : `${(i - 1) / 21}%`;
+    marker.style.left = i === 2099 ? '100%' : `${(i - 1) / 21}%`;
     marker.setAttribute('data-year', i);
     timeline.appendChild(marker);
 }
