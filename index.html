@@ -24,6 +24,11 @@
             font-size: 24px;
             margin-bottom: 20px;
         }
+        .timeline-container {
+            position: relative;
+            width: calc(100% - 20px);
+            margin: 0 auto;
+        }
         .timeline {
             width: 100%;
             height: 4px;
@@ -53,7 +58,7 @@
             border-right: 10px solid transparent;
             border-bottom: 20px solid orange;
             position: absolute;
-            bottom: -30px;
+            bottom: 24px;
             left: 0;
             transform: translateX(-50%);
         }
@@ -72,7 +77,7 @@
             border-right: 10px solid transparent;
             border-bottom: 20px solid orange;
             cursor: pointer;
-            margin-top: -10px; /* ajustez cette valeur pour aligner la flèche correctement */
+            margin-top: -10px;
         }
         #slider::-moz-range-thumb {
             width: 0;
@@ -105,8 +110,10 @@
 <body>
     <div class="container">
         <div id="yearDisplay"></div>
-        <div class="timeline" id="timeline"></div>
-        <div id="pointer"></div>
+        <div class="timeline-container">
+            <div class="timeline" id="timeline"></div>
+            <div id="pointer"></div>
+        </div>
         <input type="range" id="slider" min="1" max="2100" value="1">
     </div>
 
@@ -116,7 +123,6 @@
         const pointer = document.getElementById('pointer');
         const slider = document.getElementById('slider');
 
-        // Create markers
         for (let i = 100; i <= 2100; i += 100) {
             const marker = document.createElement('div');
             marker.className = 'marker';
@@ -132,7 +138,6 @@
             const romanSuffix = century === 1 ? "<sup>er</sup>" : "<sup>e</sup>";
             yearDisplay.innerHTML = `L'année ${year} est au ${romanCentury}${romanSuffix} siècle (${century}${centurySuffix})`;
             
-            // Update timeline color
             const start = Math.floor(year / 100) * 100;
             const end = start + 100;
             timeline.style.background = `linear-gradient(to right, 
@@ -143,8 +148,8 @@
                 black ${end / 21}%, 
                 black 100%)`;
 
-            // Update pointer position
-            pointer.style.left = `${(year - 1) / 21}%`;
+            const pointerPosition = ((year - 1) / 21) * (100 - (20 / timeline.offsetWidth * 100));
+            pointer.style.left = `${pointerPosition}%`;
         }
 
         function romanize(num) {
@@ -178,7 +183,6 @@
             updateDisplay(parseInt(e.target.value));
         });
 
-        // Initial update
         updateDisplay(1);
     </script>
 </body>
