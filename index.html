@@ -28,7 +28,7 @@
     position: relative;
     width: calc(100% - 20px);
     margin: 0 auto;
-    overflow: hidden; /* Ajoutez cette ligne */
+    overflow: visible; /* Ajoutez cette ligne */
 }
 
 
@@ -42,7 +42,7 @@
         .marker {
     position: absolute;
     width: 2px;
-    height: 10px;
+    height: 20px;
     background-color: black;
     bottom: 0;
     transform: translateX(-50%);
@@ -127,7 +127,7 @@
         for (let i = 100; i <= 2099; i += 100) {
     const marker = document.createElement('div');
     marker.className = 'marker';
-    marker.style.left = i === 2099 ? '100%' : `${(i - 1) / 21}%`;
+    marker.style.left = i === 2099 ? '100%' : `${(i - 1) / 20.99}%`;
     marker.setAttribute('data-year', i);
     timeline.appendChild(marker);
 }
