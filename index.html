@@ -52,17 +52,7 @@
             transform: translateX(-50%);
             font-size: 12px;
         }
-        #pointer {
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 20px solid orange;
-            position: absolute;
-            bottom: 24px;
-            left: 0;
-            transform: translateX(-50%);
-        }
+        
         #slider {
     width: 100%;
     margin-top: 20px;
@@ -74,21 +64,25 @@
 #slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px; /* Changez ceci */
-    height: 20px; /* Changez ceci */
-    background: orange; /* Changez ceci */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid orange;
     cursor: pointer;
-    border-radius: 50%; /* Ajoutez cette ligne */
+    margin-top: -10px;
 }
 
 #slider::-moz-range-thumb {
-    width: 20px; /* Changez ceci */
-    height: 20px; /* Changez ceci */
-    background: orange; /* Changez ceci */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid orange;
     cursor: pointer;
-    border: none; /* Ajoutez cette ligne */
-    border-radius: 50%; /* Ajoutez cette ligne */
+    border: none;
 }
+
 
         #slider::-webkit-slider-runnable-track {
             width: 100%;
@@ -115,7 +109,7 @@
         <div id="yearDisplay"></div>
         <div class="timeline-container">
             <div class="timeline" id="timeline"></div>
-            <div id="pointer"></div>
+            
         </div>
         <input type="range" id="slider" min="1" max="2100" value="1">
     </div>
@@ -152,7 +146,7 @@
                 black 100%)`;
 
             const pointerPosition = Math.min(Math.max(((year - 1) / 2100) * 100, 0), 100);
-    pointer.style.left = `${pointerPosition}%`;
+    //pointer.style.left = `${pointerPosition}%`;
         }
 
         function romanize(num) {
